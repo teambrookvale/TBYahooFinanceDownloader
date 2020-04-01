@@ -12,15 +12,20 @@ namespace TBYahooFinanceDownloader
     class Program
     {
         private static readonly HttpClient client = new HttpClient();
-        private static int waitBetweenAPIcallsToAvoidThrottingInMilliSeconds = 500;
+        private const int waitBetweenAPIcallsToAvoidThrottingInMilliSeconds = 500;
+        private const string tickersFileName = "tickers.txt";
 
         static async Task Main(string[] args)
         {
             string[] tickers;
 
+            if (!File.Exists(tickersFileName)) using (StreamWriter w = File.AppendText(tickersFileName)) {
+                w.Write("MSFT\nAAPL\nPM\bPG"); // sample tickers
+            }
+
             try
             {   // Open the text file using a stream reader.
-                using (StreamReader sr = new StreamReader("tickers.txt"))
+                using (StreamReader sr = new StreamReader(tickersFileName))
                 {
                     // Read the stream to a string, and write the string to the console.
                     String tickersFile = sr.ReadToEnd();
@@ -35,7 +40,8 @@ namespace TBYahooFinanceDownloader
                         .ToArray();
 
                     Console.WriteLine($"Tickers: {String.Join(", ", tickers)}\n");
-                    Console.WriteLine($"Note: the app will wait {waitBetweenAPIcallsToAvoidThrottingInMilliSeconds} milliseconds between each ticker query to avoid throtting.\n");
+                    Console.WriteLine($"Note 1: Edit tickers.txt file to request different stocks.");
+                    Console.WriteLine($"Note 2: App will wait {waitBetweenAPIcallsToAvoidThrottingInMilliSeconds} milliseconds between each ticker query to avoid throtting.\n");
                 }
             }
             catch (IOException e)
