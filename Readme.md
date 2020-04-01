@@ -6,9 +6,9 @@ The app is written in .NET Core as a console app. it should work out of the box 
 
 ## Screenshots
 App running in console:
-![App running in console](../blob/master/Samples/TBYahooFinanceDownloaderConsoleApp01.png)
+![App running in console](./Samples/TBYahooFinanceDownloaderConsoleApp01.png)
 
 Results in Excel:
-![Results in Excel](../blob/master/Samples/TBYahooFinanceDownloaderExcel01.png)
+![Results in Excel](./Samples/TBYahooFinanceDownloaderExcel01.png)
 
-Sample CSV export: [TBYahooFinanceStockHistory-2020-03-31.csv](../blob/master/Samples/TBYahooFinanceStockHistory-2020-03-31.csv)
+Sample CSV export: [TBYahooFinanceStockHistory-2020-03-31.csv](./Samples/TBYahooFinanceStockHistory-2020-03-31.csv)
